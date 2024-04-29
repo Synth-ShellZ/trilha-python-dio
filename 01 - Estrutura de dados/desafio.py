@@ -11,6 +11,7 @@ def menu():
     [lc]\tListar contas
     [nu]\tNovo usuário
     [q]\tSair
+    [mc]\tMudar conta
     => """
     return input(textwrap.dedent(menu))
 
@@ -102,7 +103,13 @@ def listar_contas(contas):
         print("=" * 100)
         print(textwrap.dedent(linha))
 
-
+def mudar_conta(numero_conta):
+    numero_conta = input("Informe o nome do usuário: ")
+    if numero_conta in numero_conta:
+        conta_selec == [contas(numero_conta)]
+    else:
+        print("\n=== Conta não encontrada! ===")
+        
 def main():
     LIMITE_SAQUES = 3
     AGENCIA = "0001"
@@ -113,7 +120,8 @@ def main():
     numero_saques = 0
     usuarios = []
     contas = []
-
+    conta_selec == [contas(0)]
+    
     while True:
         opcao = menu()
 
@@ -126,6 +134,7 @@ def main():
             valor = float(input("Informe o valor do saque: "))
 
             saldo, extrato = sacar(
+                numero_conta=numero_conta,
                 saldo=saldo,
                 valor=valor,
                 extrato=extrato,
@@ -152,6 +161,9 @@ def main():
 
         elif opcao == "q":
             break
+        
+        elif opcao == "mc":
+            conta_selec = mudar_conta(numero_conta) 
 
         else:
             print("Operação inválida, por favor selecione novamente a operação desejada.")
